@@ -1,0 +1,13 @@
+{
+  "name": "demo_grpc_nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:grpc": "grpc_tools_node_protoc --js_out=import_style=commonjs,binary:userService/proto/ --grpc_out=grpc_js:userService/proto --proto_path=./protos/user ./protos/user/*.proto",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
