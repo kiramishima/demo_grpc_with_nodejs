@@ -1,8 +1,8 @@
 require('dotenv').config()
-import grpc from '@grpc/grpc-js'
-import { MongoClient } from 'mongodb'
-import services from './proto/user_pb'
-const API = require('./api')
+const grpc = require('@grpc/grpc-js')
+const { MongoClient } = require('mongodb')
+const services = require('./proto/user_grpc_pb')
+const { API } = require('./api')
 
 // Mongo Connection
 const dbClient = new MongoClient(process.env.MONGO_URI, {useUnifiedTopology: true})

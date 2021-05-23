@@ -1,9 +1,9 @@
-import bcrypt from 'bcrypt';
-import auth from './auth';
-import messages from './proto/user_pb';
-import { ObjectID } from 'mongodb';
+const bcrypt = require('bcrypt')
+const auth = require('./auth')
+const messages = require('./proto/user_pb')
+const { ObjectID } = require('mongodb')
 
-export class API {
+module.exports.API = class API {
     constructor(db, grpc) {
         this.db = db;
         this.grpc = grpc;
@@ -14,6 +14,7 @@ export class API {
 
         bcrypt.hash(call.request.getPassword(), 10, (err, hash) => {
             let user = { name: call.request.getName(), email: call.request.getEmail(), password: hash }
+            console.log({ user })
             users.insertOne(user).then(r => {
                 let resp = new messages.UserResponse();
                 resp.setId(user._id.toString());

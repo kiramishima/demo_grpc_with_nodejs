@@ -1,9 +1,9 @@
-import messages from './proto/user_pb'
-import services from './proto/user_grpc_pb';
-import grpc from '@grpc/grpc-js'
+const messages = require('./proto/user_pb')
+const services = require('./proto/user_grpc_pb')
+const grpc = require('@grpc/grpc-js')
 
 function main() {
-    const client = new services.UserSvcClient('localhost:8080', grpc.credentials.createInsecure());
+    const client = new services.UserSvcClient('localhost:3000', grpc.credentials.createInsecure());
 
     let registerReq = new messages.RegisterRequest();
     registerReq.setName("Hello");
